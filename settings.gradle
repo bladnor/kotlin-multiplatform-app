@@ -1,3 +1,4 @@
 rootProject.name = 'eventregistration'
+include ':eventregistration-android'
 include 'eventregistration-backend'
 
