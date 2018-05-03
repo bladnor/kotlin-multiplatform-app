@@ -1,3 +1,4 @@
+import ch.ti8m.eventregistration.common.model.Event
 import kotlinx.html.*
 import kotlinx.html.dom.create
 import kotlinx.html.js.onClickFunction
@@ -8,7 +9,6 @@ import org.w3c.fetch.*
 import kotlin.browser.document
 import kotlin.browser.window
 
-data class Event(val name: String = "", val description: String = "", val id: Long = 0)
 
 var alertDiv: HTMLDivElement? = null
 var eventListContainer: HTMLTextAreaElement? = null
@@ -21,11 +21,11 @@ val ALERT = "alert"
 
 fun main(args: Array<String>) {
 
-    val appContentContainer = document.getElementById("container")
+    val appContentContainer = document.getElementById("container") as HTMLDivElement
 
-    appContentContainer?.append(appContent)
+    appContentContainer.append(appContent)
     val div = document.create.div {}
-    appContentContainer?.append(div)
+    appContentContainer.append(div)
     alertDiv = document.getElementById("${ALERT}Id") as HTMLDivElement
     eventListContainer = document.getElementById("${EVENTLISTCONTAINER}Id") as HTMLTextAreaElement
     window.onload = {
