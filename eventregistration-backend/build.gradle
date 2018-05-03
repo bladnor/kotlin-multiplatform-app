@@ -48,6 +48,7 @@ dependencies {
     compile('org.jetbrains.kotlin:kotlin-reflect')
     compile project(':eventregistration-common-jvm')
     runtime('mysql:mysql-connector-java')
+    //    runtime('com.h2database:h2')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
