@@ -1,4 +1,8 @@
 rootProject.name = 'eventregistration'
-include ':eventregistration-android'
+include 'eventregistration-common'
+include 'eventregistration-common-js'
+include 'eventregistration-common-jvm'
 include 'eventregistration-backend'
+include 'eventregistration-frontend'
+include ':eventregistration-android'
 

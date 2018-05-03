@@ -1,0 +1,13 @@
+POST http://localhost:8080/events
+Content-Type: application/json
+
+{
+ "name": "Segeln Mittelmeer",
+ "DESCRIPTION": "Segeln im Mittelmeer mit Harald"
+ }
+
+###
+
+GET http://localhost:8080/events
+
+###
