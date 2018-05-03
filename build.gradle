@@ -1,3 +1,24 @@
 group 'ch.ti8m.eventregistration'
 version '1.0-SNAPSHOT'
+allprojects {
+    buildscript {
+        ext.kotlinVersion = '1.2.41'
+
+        repositories {
+//            maven { url 'https://maven.google.com' }
+            jcenter()
+        }
+        dependencies {
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        }
+
+    }
+    repositories {
+//        maven { url 'https://maven.google.com' }
+        jcenter()
+        mavenCentral()
+
+    }
+}
+
 

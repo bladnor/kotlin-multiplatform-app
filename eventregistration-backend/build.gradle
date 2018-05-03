@@ -1,17 +1,12 @@
 buildscript {
-    ext.kotlinVersion = '1.2.41'
     ext.springBootVersion = '2.0.1.RELEASE'
+    ext.junitVersion = '5.2.0'
 
-    repositories {
-        mavenCentral()
-    }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
         classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
     }
 }
-
 
 
 apply plugin: 'kotlin'
@@ -23,8 +18,6 @@ repositories {
     mavenCentral()
 }
 
-group 'ch.ti8m.eventregistration'
-version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 compileKotlin {
@@ -41,14 +34,22 @@ compileTestKotlin {
     }
 }
 
+configurations {
+    all*.exclude group: 'junit', module: 'junit'
+}
+
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('com.fasterxml.jackson.module:jackson-module-kotlin')
-//    compile('org.flywaydb:flyway-core')
+    compile('org.flywaydb:flyway-core')
     compile('org.jetbrains.kotlin:kotlin-stdlib-jdk8')
     compile('org.jetbrains.kotlin:kotlin-reflect')
+    compile project(':eventregistration-common-jvm')
     runtime('mysql:mysql-connector-java')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
 }

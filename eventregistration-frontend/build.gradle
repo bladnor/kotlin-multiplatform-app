@@ -1,0 +1,36 @@
+buildscript {
+    ext.kotlinx_html_version = '0.6.9'
+}
+
+group 'ch.ti8m.eventregistration'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'kotlin2js'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlinVersion"
+    compile "org.jetbrains.kotlinx:kotlinx-html-js:${kotlinx_html_version}"
+//    compile project(':eventregistration-common-js')
+    testCompile "org.jetbrains.kotlin:kotlin-test-js:$kotlinVersion"
+}
+
+compileKotlin2Js.kotlinOptions.sourceMap = true
+compileKotlin2Js.kotlinOptions.outputFile = "${projectDir}/web/js/app.js"
+compileKotlin2Js.kotlinOptions.suppressWarnings = true
+compileKotlin2Js.kotlinOptions.verbose = true
+
+// Wird aktuell noch gebraucht um aus der compile time dependency (kotlin-stdlib-js-<version>.jar) das kotlin.js und das kotlin.meta.js zu extrahieren
+build.doLast {
+    configurations.compile.each { File file ->
+        copy {
+            includeEmptyDirs = false
+
+            from zipTree(file.absolutePath)
+            into "${projectDir}/web"
+            include { fileTreeElement ->
+                def path = fileTreeElement.path
+                path.endsWith(".js") && (path.startsWith("META-INF/resources/") || !path.startsWith("META-INF/"))
+            }
+        }
+    }
+}

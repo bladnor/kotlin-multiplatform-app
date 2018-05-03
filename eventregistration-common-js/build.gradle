@@ -1,0 +1,10 @@
+apply plugin: 'kotlin-platform-js'
+
+group 'ch.ti8m.eventregistration'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlinVersion"
+    testCompile "org.jetbrains.kotlin:kotlin-test-js:$kotlinVersion"
+    expectedBy project(":eventregistration-common")
+}

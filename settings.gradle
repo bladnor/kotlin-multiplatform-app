@@ -1,3 +1,7 @@
 rootProject.name = 'eventregistration'
+include 'eventregistration-common'
+include 'eventregistration-common-jvm'
+include 'eventregistration-common-js'
 include 'eventregistration-backend'
+include 'eventregistration-frontend'
 
