@@ -1,7 +1,6 @@
 package ch.ti8m.eventregistration.backend.controller
 
 import ch.ti8m.eventregistration.backend.converter.convert
-import ch.ti8m.eventregistration.backend.entity.EventEntity
 import ch.ti8m.eventregistration.backend.repository.EventRepository
 import ch.ti8m.eventregistration.common.model.Event
 import org.springframework.beans.factory.annotation.Autowired
